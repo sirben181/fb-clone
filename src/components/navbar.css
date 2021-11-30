@@ -1,0 +1,65 @@
+*{box-sizing:border-box;
+margin:0;
+}
+.navbar_container{
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height:70px;
+    width:100%;
+    background:rgb(243, 243, 243);
+    box-shadow: solid 2px #191919;
+    
+}
+.fb_icon{
+   font-size:50px;
+    color:#4284db;
+    height:40px;
+    width:40px;
+    margin-top:10px;
+}
+.searchbar{
+    display:flex;
+    margin-left:10px;
+    margin-right:40px;
+    padding:10px;
+
+   
+
+}
+.inputSearch{
+    height:40px;
+    width:250px;
+    border:none;
+    outline:none;
+    border-radius:39px;
+    position:relative;
+    background:#ddd;
+}
+input:placeholder{
+    position:relative;
+    right:160px;
+    top:10px;
+    color:#575656af;
+}
+.search_icon{
+    position:relative;
+    right:200px;
+    top:10px;
+    color:#575656af;
+}
+.menu{
+    display:flex;
+    padding-top:20px; 
+}
+.home, .video, .store, .group_avatar, .gaming{
+    margin-right:40px;
+    margin-left:40px;
+    font-size:3rem;
+}
+.submenu{
+    display:flex;
+    margin-top:20px;
+}
+.submenu_icon{
+    margin-left:30px;
+}
