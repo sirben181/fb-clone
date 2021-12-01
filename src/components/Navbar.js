@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className='navbar_container'>
             <div className="searchbar">
               <FacebookRoundedIcon  className="fb_icon"
-              />
+              style={{fontSize:'30px'}}/>
               <div className="searchbar">
                   <input className="inputSearch"  placeholder="Search"/>
                   <SearchIcon  className="search_icon"/>
