@@ -3,6 +3,7 @@
 }
 .centralfeeds{
   display:flex;
+  flex-direction:column;
   margin-top:10px;
   background:#ddd;
  margin-left:50px;
@@ -63,4 +64,21 @@ z-index: 5;
   position:absolute;
   bottom:-50px;
   left:25px;
+}
+.inputPost{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:#fff;
+  width:550px;
+  height:auto;
+  border-radius:5px;
+  margin:20px 50px 20px 50px;
+}
+form{
+  display:flex;
+  margin:20px;
+}
+.input{
+  width:100%;
 }

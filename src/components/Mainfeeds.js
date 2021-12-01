@@ -2,6 +2,9 @@ import React from 'react'
 import './mainfeeds.css';
 import Avatar from '@mui/material/Avatar'
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import {FaVideo} from 'react-icons/fa'
+import {FaRegGrinAlt} from 'react-icons/fa'
+import {GrGallery} from 'react-icons/gr'
 // import Status from './Status';
 const Mainfeeds = () => {
     return (
@@ -38,14 +41,29 @@ const Mainfeeds = () => {
             {/* icons video photo ,image icon and emoji icon */}
             <div className="inputPost">
                 <form>
-                    <Avatar src="" alt="" />
+                    <Avatar src="" alt="" style={{marginRight:'10px'}} />
                     <input type="text" placeholder="whats are u thing ben" />
                     <button type="submit" hidden> submit</button>
                 </form>
                 <div className="inputposticons">
                     {/* video */}
+                    <div className="video">
+                    <FaVideo style={{color:'red',fontSize:'24px'}}/>
+                    <span>Video</span>
+                    </div>
+                   
                     {/* photo */}
+                    <div className="photo">
+                    <GrGallery />
+                    <span>Photo</span>
+                    </div>
+                   
                     {/* emoji */}
+                    <div className="emoji">
+                    <FaRegGrinAlt />
+                    <span>emoji</span>
+                    </div>
+                   
                 </div>
 
             </div>
