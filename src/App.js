@@ -1,4 +1,7 @@
+import Body from './components/Body';
 import Navbar from './components/Navbar'
+import "./index.css";
+
 
 function App() {
   return (
@@ -6,9 +9,7 @@ function App() {
       {/* <Login /> */}
       
        <Navbar />
-       {/* <Sidebar /> */}
-       {/* <Mainfeeds /> */}
-       {/* <Lessfeeds/> */}
+       <Body />
       
     </div>
   );

@@ -6,7 +6,7 @@ margin:0;
     grid-template-columns: 1fr 2fr 1fr;
     height:70px;
     width:100%;
-    background:rgb(243, 243, 243);
+    background:#fff;
     box-shadow: solid 2px #191919;
     
 }
@@ -40,6 +40,7 @@ input:placeholder{
     right:160px;
     top:10px;
     color:#575656af;
+    font-size:20px;
 }
 .search_icon{
     position:relative;

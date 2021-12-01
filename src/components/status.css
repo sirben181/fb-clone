@@ -1,0 +1,20 @@
+*{
+    box-sizing:border-box;
+}
+
+.status{
+    display:flex;
+    height:400px;
+    width:200px;
+    border-radius:5px;
+}
+.card{
+    display:flex;
+    text-align:center;
+    justify-content:center;
+    flex-direction:column;
+}
+.statusphoto{
+ 
+    
+}
