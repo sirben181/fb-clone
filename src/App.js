@@ -1,17 +1,16 @@
+import {useState} from 'react';
 import Body from './components/Body';
 import Navbar from './components/Navbar'
 import "./index.css";
-import { collection, addDoc } from "firebase/firestore"; 
-import db from  './components/firebase';
 import {auth,provider} from './components/firebase'
-import { getAuth,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
+import {signInWithPopup} from "firebase/auth";
 
 
 import Login from './components/Login'
 
 
 function App() {
-  const user=''
+ const [user,setUser]=useState('')
     const signIn=()=>{
       signInWithPopup(auth,provider)
       .then((result=>{
@@ -23,7 +22,8 @@ function App() {
 
         
         // The signed-in user info.
-        // const user = result.user;
+        const user = result.user;
+        setUser(user)
       }))
     }
   return (
