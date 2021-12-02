@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './post.css'
 import Avatar from "@mui/material/Avatar"
 import {BiComment} from "react-icons/bi"
 import {FaThumbsUp}  from "react-icons/fa"
 import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
+import { collection, getDocs } from "firebase/firestore";
+
+import db from './firebase';
 
 const Post = () => {
     const [{user},dispatch]=useStateValue()
+    const [post,setPost]=useState('')
+    useEffect(()=>{
+getPosts(post);
+    },[])
+    const getPosts=async()=>{
+        const querySnapshot = await getDocs(collection(db, "posts"));
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+    }
+   
+
     return (
         <div className="post_container">
            <div className="post">

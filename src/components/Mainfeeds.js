@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './mainfeeds.css';
 import Avatar from '@mui/material/Avatar'
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
@@ -11,20 +11,23 @@ import db from './firebase';
 import {useStateValue} from './StateProvider'
 // import Status from './Status';
 const Mainfeeds = () => {
-    const[post,setPost]=useState('')
+    const[input,setInput]=useState('')
     const[{user},dispatch]=useStateValue()
+    const filepickerRef=useRef(null)
+    
     const handleSubmit=async (e)=>{
      e.preventDefault();
-
      //here we will have another function to be called i here
      const docRef = await addDoc(collection(db, "posts"), {
-        message:post,
-        timestamp:'',
+        message:input,
+        image:user.photoURL,
+        username:user.displayName,
+        timestamp:''
        });
        console.log("Document written with ID: ", docRef.id);
      // } catch (e) {
        // console.error("Error adding document: ", e);
-     setPost('')
+     setInput('')
     }
 
     return (
@@ -62,8 +65,8 @@ const Mainfeeds = () => {
             <div className="inputPost">
                 <form onSubmit={handleSubmit}>
                     <Avatar src={user.photoURL} alt="" style={{marginRight:'10px'}} />
-                    <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>setPost(e.target.value)} 
-                    value={post}/>
+                    <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>setInput(e.target.value)} 
+                    value={input}/>
                     <button type="submit" hidden> submit</button>
                 </form>
                 <div className="inputposticons">
@@ -72,11 +75,11 @@ const Mainfeeds = () => {
                        <FaVideo style={{color:'red',fontSize:'24px',paddingTop:'-10px'}}/>
                        <span> live video</span>
                     </div>
-                   
+                    
                     {/* photo */}
-                    <div className="photo">
+                    <div className="photo" onClick={()=>filepickerRef.current.click()}>
                     <GrGallery style={{color:'green',fontSize:'24px'}}/>
-                    <span>Photo</span>
+                    <span>Photo/video</span>
                     </div>
                    
                     {/* emoji */}
