@@ -1,8 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore";
-import { GoogleAuthProvider } from "firebase/auth";
-import {getAuth} from "firebase/auth";
+import { getAuth,GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
     apiKey: "AIzaSyCPXMBUgs0vYsnCBPaNtp8p3Z7PCZzUOmI",
     authDomain: "fb-react2.firebaseapp.com",

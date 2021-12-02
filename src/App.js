@@ -4,22 +4,39 @@ import "./index.css";
 import { collection, addDoc } from "firebase/firestore"; 
 import db from  './components/firebase';
 import {auth,provider} from './components/firebase'
+import { getAuth,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
 
-// import Login from './components/Login'
+
+import Login from './components/Login'
 
 
 function App() {
-  // const user=null
-      const addPost=async ()=>{
-      //
-      }
+  const user=''
+    const signIn=()=>{
+      signInWithPopup(auth,provider)
+      .then((result=>{
+        
+        console.log(result)
+        console.log(result.user.displayName)
+        console.log(result.user.email)
+        console.log(result.user.photoURL)
+
+        
+        // The signed-in user info.
+        // const user = result.user;
+      }))
+    }
   return (
     <div className="app">
-      {/* !user ? (
-      <Login />) :( */}
+      { !user ? 
+      (<Login signIn={signIn}/>) :(
+        <>
+        <Navbar />
+        <Body />
+        </>
+       )}
       
-       <Navbar />
-       <Body />
+     
      
     </div>
   );
