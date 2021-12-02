@@ -21,7 +21,10 @@
   position:relative;
   border-radius: 5px;
   margin:5px;
-  
+  transition:.2s;
+}
+.card:hover{
+  transform:scale(1.02);
 }
 .statusavatar{
   position:absolute;
@@ -49,7 +52,10 @@
   border-radius:5px;
   border-bottom:1px solid #000;
   position:relative;
+  transition:.2s;
 }
+.card1:hover{transform:scale(1.02);}
+
 .addstory{color:blue;
 background:#fff;
 border-radius:20px;
@@ -78,7 +84,36 @@ z-index: 5;
 form{
   display:flex;
   margin:20px;
+  padding-bottom:10px;
+  border-bottom:2px solid #ddd;
 }
-.input{
+input{
   width:100%;
+  border-radius:39px;
+  outline:none;
+  border:none;
+  background:#ddd;
+  font-size:20px;
+}
+input::placeholder{
+  text-align:center;
+  color:grey;
+}
+.inputposticons{
+  display:flex;
+  margin:10px;
+  justify-content:space-between;
+}
+.video span{font-size:19px;}
+.video:hover{
+  background:#ddd;
+  border-radius:5px;
+}
+.photo:hover{
+  background:#ddd;
+  border-radius:5px;
+}
+.emoji:hover{
+  background:#ddd;
+  border-radius:5px;
 }

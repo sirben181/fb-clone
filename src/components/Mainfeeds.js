@@ -5,6 +5,7 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import {FaVideo} from 'react-icons/fa'
 import {FaRegGrinAlt} from 'react-icons/fa'
 import {GrGallery} from 'react-icons/gr'
+import Post from './Post';
 // import Status from './Status';
 const Mainfeeds = () => {
     return (
@@ -48,19 +49,19 @@ const Mainfeeds = () => {
                 <div className="inputposticons">
                     {/* video */}
                     <div className="video">
-                    <FaVideo style={{color:'red',fontSize:'24px'}}/>
-                    <span>Video</span>
+                       <FaVideo style={{color:'red',fontSize:'24px',paddingTop:'-10px'}}/>
+                       <span> live video</span>
                     </div>
                    
                     {/* photo */}
                     <div className="photo">
-                    <GrGallery />
+                    <GrGallery style={{color:'green',fontSize:'24px'}}/>
                     <span>Photo</span>
                     </div>
                    
                     {/* emoji */}
                     <div className="emoji">
-                    <FaRegGrinAlt />
+                    <FaRegGrinAlt style={{color:'orange',fontSize:'24px'}}/>
                     <span>emoji</span>
                     </div>
                    
@@ -68,7 +69,7 @@ const Mainfeeds = () => {
 
             </div>
 
-            {/* <Posts /> */}
+            <Post />
             
         </div>
     )
