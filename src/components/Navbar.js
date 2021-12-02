@@ -12,13 +12,15 @@ import AppsIcon from '@mui/icons-material/Apps';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import {FaFacebookMessenger} from 'react-icons/fa'
 import {FaCaretDown}  from "react-icons/fa"
+import { useStateValue } from './StateProvider';
  
 const Navbar = () => {
+    const [{user},dispatch]=useStateValue()
     return (
         <div className='navbar_container'>
             <div className="searchbar">
               <FacebookRoundedIcon  className="fb_icon"
-              style={{fontSize:'30px'}}/>
+              style={{fontSize:'70px'}}/>
               <div className="searchbar">
                   <input className="inputSearch"  placeholder="Search"/>
                   <SearchIcon  className="search_icon"/>
@@ -34,7 +36,7 @@ const Navbar = () => {
             <SportsEsportsIcon  className="gaming central-menu"/>
             </div>
             <div className="submenu">
-              <SmallAvatar className="submenu_icon avatar_sidebar" />
+              <SmallAvatar className="submenu_icon avatar_sidebar" src={user.photoURL}/>
               <AppsIcon className=" submenu_icon menu_small" />
               <FaFacebookMessenger className=" submenu_icon messenger"/>
               <NotificationsIcon className="submenu_icon notifications"/>

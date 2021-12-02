@@ -8,10 +8,11 @@ import {GrGallery} from 'react-icons/gr'
 import Post from './Post';
 import { collection, addDoc } from "firebase/firestore";
 import db from './firebase';
-
+import {useStateValue} from './StateProvider'
 // import Status from './Status';
 const Mainfeeds = () => {
     const[post,setPost]=useState('')
+    const[{user},dispatch]=useStateValue()
     const handleSubmit=async (e)=>{
      e.preventDefault();
 
@@ -60,8 +61,8 @@ const Mainfeeds = () => {
             {/* icons video photo ,image icon and emoji icon */}
             <div className="inputPost">
                 <form onSubmit={handleSubmit}>
-                    <Avatar src="" alt="" style={{marginRight:'10px'}} />
-                    <input type="text" placeholder="whats are u thing ben" onChange={(e)=>setPost(e.target.value)} 
+                    <Avatar src={user.photoURL} alt="" style={{marginRight:'10px'}} />
+                    <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>setPost(e.target.value)} 
                     value={post}/>
                     <button type="submit" hidden> submit</button>
                 </form>
