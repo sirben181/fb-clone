@@ -27,20 +27,20 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="menu">   
-             <HomeIcon className="home central-menu" />
-             < OndemandVideoIcon  className="video central-menu"/>
-             <StoreIcon  className="store central-menu"/>
+             <HomeIcon className="home central-menu" style={{fontSize:'30px'}} />
+             < OndemandVideoIcon  className="video central-menu" style={{fontSize:'30px'}}/>
+             <StoreIcon  className="store central-menu" style={{fontSize:'30px'}}/>
              <SmallAvatar className="group_avatar central-menu">
                  <GroupIcon />
             </SmallAvatar>
-            <SportsEsportsIcon  className="gaming central-menu"/>
+            <SportsEsportsIcon  className="gaming central-menu" style={{fontSize:'30px'}}/>
             </div>
             <div className="submenu">
-              <SmallAvatar className="submenu_icon avatar_sidebar" src={user.photoURL}/>
-              <AppsIcon className=" submenu_icon menu_small" />
-              <FaFacebookMessenger className=" submenu_icon messenger"/>
-              <NotificationsIcon className="submenu_icon notifications"/>
-              <FaCaretDown className=" submenu_icon account"/>
+              <SmallAvatar className="submenu_icon avatar_sidebar" src={user.photoURL} style={{fontSize:'23px'}}/>
+              <AppsIcon className=" submenu_icon menu_small" style={{fontSize:'23px'}}/>
+              <FaFacebookMessenger className=" submenu_icon messenger" style={{fontSize:'23px'}}/>
+              <NotificationsIcon className="submenu_icon notifications" style={{fontSize:'23px'}}/>
+              <FaCaretDown className=" submenu_icon account" style={{fontSize:'23px'}}/>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ import {BiComment} from "react-icons/bi"
 import {FaThumbsUp}  from "react-icons/fa"
 import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
-import { collection, getDocs } from "firebase/firestore";
+// import { collection, setDoc,doc } from "firebase/firestore";
 
 import db from './firebase';
 
@@ -16,10 +16,12 @@ const Post = () => {
 getPosts(post);
     },[])
     const getPosts=async()=>{
-        const querySnapshot = await getDocs(collection(db, "posts"));
-        querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
-        });
+        // const postsRef = collection(db, "posts");
+        // await setDoc(doc(postsRef, "posts"), {
+        //  username:doc.displayName,
+        //  post:doc.message,
+        
+        // });
     }
    
 
@@ -32,7 +34,7 @@ getPosts(post);
                  <p>10:30pm</p>
                </div>
                <div className="post_text">
-               <span>hello this is amazing</span>
+               <span>This is the greatest thing here</span>
                </div>
                <div className="post_image">
                    <img className="actual_image" alt=""/>
