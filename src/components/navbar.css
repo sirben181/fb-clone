@@ -7,8 +7,9 @@ margin:0;
     height:70px;
     width:100%;
     background:#fff;
-    box-shadow: solid 2px #191919;
-    
+    box-shadow: solid 2px hsl(0, 0%, 10%);
+    position:fixed;
+    z-index:50;
 }
 .fb_icon{
    font-size:50px;
@@ -57,6 +58,7 @@ input:placeholder{
     margin-left:40px;
     font-size:3rem;
 }
+.active{border-bottom:4px solid #126be0;}
 .submenu{
     display:flex;
     margin-top:20px;

@@ -11,18 +11,18 @@ function App() {
   const [{user},dispatch]=useStateValue()
 
   return (
-    <div className="app">
+    <>
       { !user ? 
       (<Login />) :(
-        <>
+        <div className="app">
         <Navbar />
         <Body />
-        </>
+        </div>
        )}
       
      
      
-    </div>
+    </>
   );
 }
 

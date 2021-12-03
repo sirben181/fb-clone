@@ -93,6 +93,11 @@ const Mainfeeds = () => {
             </div>
 
             <Post />
+            <Post />
+            <Post />
+
+
+        
             
         </div>
     )

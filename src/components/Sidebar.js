@@ -48,7 +48,7 @@ const Sidebar = () => {
              {/* caretdown /seemore */}
              <div className="seemore">
                  <FaAngleDown/>
-                 <p className="seemore">See more</p>
+                 <p className="seemoretext">See more</p>
              </div>
             </div>
              {/* <Shortcuts /> */}
@@ -78,7 +78,7 @@ const Sidebar = () => {
                   </div>
                   </div>
                   <div className="footer">
-                      <small>Privacy . Terms .Advertising .Ad choices .cookies .More .Meta &copy; 2021</small>
+                      <small>Privacy . Terms . Advertising .   Ad choices . cookies . More .Meta &copy; 2021</small>
                   </div>
              {/* image and familia ya matangazo ya mpira redio jambo live */}
              {/* warren buffet :great leader */}

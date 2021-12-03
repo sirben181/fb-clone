@@ -27,7 +27,8 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="menu">   
-             <HomeIcon className="home central-menu" style={{fontSize:'30px'}} />
+             <HomeIcon className="home central-menu active"
+              style={{fontSize:'30px',color:'blue'}} />
              < OndemandVideoIcon  className="video central-menu" style={{fontSize:'30px'}}/>
              <StoreIcon  className="store central-menu" style={{fontSize:'30px'}}/>
              <SmallAvatar className="group_avatar central-menu">
