@@ -5,7 +5,7 @@ import {BiComment} from "react-icons/bi"
 import {FaThumbsUp}  from "react-icons/fa"
 import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, query, onSnapshot } from "firebase/firestore";
 import db from './firebase';
 
 const Post = () => {
@@ -13,34 +13,32 @@ const Post = () => {
     const [posts,setPosts]=useState('')
     useEffect(()=>{
 getPosts();
-    },[])
+    },[db])
     const getPosts=async()=>{
-        const querySnapshot = await getDocs(collection(db, "posts"));
-        querySnapshot.orderBy("timestamp",'desc'),(snapshot)=>{
-            setPosts(snapshot.docs)
-            
-        }
+       
+
+        const q = query(collection(db, "posts"));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+          setPosts(querySnapshot.forEach((doc) => ({
+              username:doc.data().username,
+              image:doc.data().image,
+              timestamp:doc.data().timestamp,
+              posttext:doc.data().message
+          })));
+    {/*   console.log("Current cities in CA: ", cities.join(", ")); */}
+        });
     }
-    // db.collection('posts')
-    // .orderBy("timestamp",'desc')
-    // .onSnapshot((snapshot)=>{
-    //  setPosts(snapshot.docs.map(doc=>({ 
-    //  id:doc.id,
-    //  data:doc.data()     
-    // }) ))
-    //  }
-    {posts.localeCompare}
 
     return (
         <div className="post_container">
            <div className="post">
                <div className="post_header">
-                 <Avatar src={post.data.image}/>
-                 <p> {user.displayName}</p>
+                 <Avatar src={posts.image}/>
+                 <p> {posts.username}</p>
                  <p>10:30pm</p>
                </div>
                <div className="post_text">
-               <span>{posts.data.message}</span>
+               <span>{posts.posttext}</span>
                </div>
                <div className="post_image">
                    <img className="actual_image" alt=""/>
