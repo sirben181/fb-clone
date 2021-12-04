@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './mainfeeds.css';
 import Avatar from '@mui/material/Avatar'
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
@@ -12,14 +12,29 @@ import soft from '../images/soft.png'
 import page from '../images/page.png'
 import prof1 from '../images/prof1.jpg'
 import simple from '../images/simple.png'
-import { collection, addDoc } from "firebase/firestore";
 import db from './firebase';
+import { collection, query, onSnapshot, addDoc} from "firebase/firestore"
 import {useStateValue} from './StateProvider'
 // import Status from './Status';
 const Mainfeeds = () => {
     const[input,setInput]=useState('')
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
+    const [posts,setPosts]=useState({})
+    useEffect(()=>{
+getPosts();
+    },[db])
+    const getPosts=async()=>{
+       
+
+        const q = query(collection(db, "posts"));
+       const unsubscribe= onSnapshot(q, (querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+             setPosts(doc.data())
+          });
+    
+        });
+    }
     
     const handleSubmit=async (e)=>{
      e.preventDefault();
@@ -99,7 +114,16 @@ const Mainfeeds = () => {
 
             </div>
 
-            <Post />        
+           
+            {posts.forEach((post)=>{
+            <Post 
+            username={post.username}
+            key={post.id}
+            messsage={post.message}
+            image={post.image}
+            timestamp={post.timestampp}
+            />})}
+                    
         </div>
     )
 }

@@ -5,40 +5,22 @@ import {BiComment} from "react-icons/bi"
 import {FaThumbsUp}  from "react-icons/fa"
 import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
-import { collection, query, onSnapshot } from "firebase/firestore";
-import db from './firebase';
 
-const Post = () => {
+
+const Post = ({image,username,timestamp,message}) => {
     const [{user},dispatch]=useStateValue()
-    const [posts,setPosts]=useState('')
-    useEffect(()=>{
-getPosts();
-    },[db])
-    const getPosts=async()=>{
-       
-
-        const q = query(collection(db, "posts"));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-          setPosts(querySnapshot.forEach((doc) => ({
-              username:doc.data().username,
-              image:doc.data().image,
-              timestamp:doc.data().timestamp,
-              posttext:doc.data().message
-          })));
-    {/*   console.log("Current cities in CA: ", cities.join(", ")); */}
-        });
-    }
+  
 
     return (
         <div className="post_container">
            <div className="post">
                <div className="post_header">
-                 <Avatar src={posts.image}/>
-                 <p> {posts.username}</p>
-                 <p>10:30pm</p>
+                 <Avatar src={image}/>
+                 <p>{username}</p>
+                 <p>{timestamp}</p>
                </div>
                <div className="post_text">
-               <span>{posts.posttext}</span>
+               <span>{message}</span>
                </div>
                <div className="post_image">
                    <img className="actual_image" alt=""/>

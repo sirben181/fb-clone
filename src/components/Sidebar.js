@@ -66,7 +66,7 @@ const Sidebar = () => {
                       <img src='' alt=""/>
                       <h4 className="group_warren">Warren Buffet:Great Leader</h4>
                   </div>
-                  <div classname="reactjsdev">
+                  <div className="reactjsdev">
                       <img src=''alt=""/>
                       <h4 className="group_reactjs">React Js Developers</h4>
                   </div>
