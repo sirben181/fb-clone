@@ -18,7 +18,6 @@
 .card{
   height:230px;
   width:120px;
-  background-image:url('../images/code1.png');
   background-position: cover;
   position:relative;
   border-radius: 5px;
@@ -48,7 +47,6 @@
 }
 .card1{
   height:170px;
-  background-image:url('../images/code1.png');
   background-position: cover;
   padding-bottom:10px;
   border-radius:5px;

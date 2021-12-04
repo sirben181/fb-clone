@@ -56,25 +56,25 @@ const Sidebar = () => {
                   {/* image and chuka university */}
                   <div className='chukauniversity'>
                       <img src='' alt=""/>
-                      <h5 className="group_chuka">Chuka university live</h5>
+                      <h4 className="group_chuka">Chuka university live</h4>
                   </div>
                   <div className="familiamatangazo">
                       <img src=''/>
-                      <h5 className="group_familia">Familia ya Matangazo ya mpira redio Jambo live</h5>
+                      <h4 className="group_familia">Familia ya Matangazo ya mpira redio Jambo live</h4>
                   </div>
                   <div className="WarrenBuffet">
                       <img src='' alt=""/>
-                      <h5 className="group_warren">Warren Buffet:Great Leader</h5>
+                      <h4 className="group_warren">Warren Buffet:Great Leader</h4>
                   </div>
                   <div classname="reactjsdev">
                       <img src=''alt=""/>
-                      <h5 className="group_reactjs">React Js Developers</h5>
+                      <h4 className="group_reactjs">React Js Developers</h4>
                   </div>
                   <div className="thelanguage">
                       <img src='' alt=""/>
-                      <h5 className="group_thelanguage">
+                      <h4 className="group_thelanguage">
                           The Language Tutor-Spanish
-                      </h5>
+                      </h4>
                   </div>
                   </div>
                   <div className="footer">

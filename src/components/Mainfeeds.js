@@ -6,6 +6,12 @@ import {FaVideo} from 'react-icons/fa'
 import {FaRegGrinAlt} from 'react-icons/fa'
 import {GrGallery} from 'react-icons/gr'
 import Post from './Post';
+import code from '../images/code.png'
+import woman4 from '../images/woman4.jpg'
+import soft from '../images/soft.png'
+import page from '../images/page.png'
+import prof1 from '../images/prof1.jpg'
+import simple from '../images/simple.png'
 import { collection, addDoc } from "firebase/firestore";
 import db from './firebase';
 import {useStateValue} from './StateProvider'
@@ -35,27 +41,28 @@ const Mainfeeds = () => {
             {/* <Status /> */}
             <div className="status">
                 <div className="createstory">
-                   <div className="card1">
+                   <div className="card1" style={{backgroundImage:`url(${user.photoURL})`,
+                backgroundRepeat:'none'}}>
                 
                       <AddCircleRoundedIcon  className="addstory"/>
                       <span>Create story</span>                  
                   </div>
                 </div>
-                <div className="card">
-                    <Avatar   className="statusavatar" src="../images/code1.png"/>
-                      <span>benson kamau</span>                  
+                <div className="card" style={{backgroundImage:`url(${code})`}}>
+                    <Avatar   className="statusavatar" src={prof1}/>
+                      <span>stephen james</span>                  
                 </div>
-                <div className="card">
-                    <Avatar   className="statusavatar" src="../images/code1.png"/>
-                    <span>benson kamau</span> 
+                <div className="card" style={{backgroundImage:`url(${page})`}}>
+                    <Avatar   className="statusavatar" src={woman4}/>
+                    <span>ben turner</span> 
                 </div>
-                <div className="card">
-                    <Avatar   className="statusavatar" src="../images/code1.png"/>
-                    <span>benson kamau</span> 
+                <div className="card" style={{backgroundImage:`url(${soft})`}}>
+                    <Avatar   className="statusavatar" src={prof1}/>
+                    <span>Donald Sutherland</span> 
                  </div>
-                <div className="card">
-                    <Avatar   className="statusavatar" src="../images/code1.png"/>
-                    <span>benson kamau</span> 
+                <div className="card" style={{backgroundImage:`url(${simple})`}}>
+                    <Avatar   className="statusavatar" src={page}/>
+                    <span>Austin mike</span> 
                  </div>
             </div>
             {/* <Input /> */}
@@ -64,7 +71,7 @@ const Mainfeeds = () => {
             {/* icons video photo ,image icon and emoji icon */}
             <div className="inputPost">
                 <form onSubmit={handleSubmit}>
-                    <Avatar src={user.photoURL} alt="" style={{marginRight:'10px'}} />
+                    <Avatar src={user.photoURL} alt="" style={{marginRight:'10px' }} />
                     <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>setInput(e.target.value)} 
                     value={input}/>
                     <button type="submit" hidden> submit</button>
