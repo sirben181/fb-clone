@@ -28,7 +28,7 @@ const Mainfeeds = () => {
         message:input,
         image:user.photoURL,
         username:user.displayName,
-        timestamp:''
+        timestamp:new Date,
        });
        console.log("Document written with ID: ", docRef.id);
      // } catch (e) {
@@ -99,13 +99,7 @@ const Mainfeeds = () => {
 
             </div>
 
-            <Post />
-            <Post />
-            <Post />
-
-
-        
-            
+            <Post />        
         </div>
     )
 }
