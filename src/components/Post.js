@@ -7,7 +7,6 @@ import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
 import { collection, getDocs } from "firebase/firestore"; 
 import db from './firebase';
-import { PodcastsTwoTone } from '@mui/icons-material'
 
 const Post = () => {
     const [{user},dispatch]=useStateValue()
@@ -19,7 +18,7 @@ getPosts();
         const querySnapshot = await getDocs(collection(db, "posts"));
         querySnapshot.orderBy("timestamp",'desc'),(snapshot)=>{
             setPosts(snapshot.docs)
-            console.log(snapshot.docs)
+            
         }
     }
     // db.collection('posts')
@@ -29,7 +28,8 @@ getPosts();
     //  id:doc.id,
     //  data:doc.data()     
     // }) ))
-    //  })
+    //  }
+    {posts.localeCompare}
 
     return (
         <div className="post_container">
