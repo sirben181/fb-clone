@@ -20,7 +20,7 @@ const Mainfeeds = () => {
     const[input,setInput]=useState('')
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
-    const [posts,setPosts]=useState({})
+    const [post,setPost]=useState('')
     useEffect(()=>{
 getPosts();
     },[db])
@@ -30,10 +30,15 @@ getPosts();
         const q = query(collection(db, "posts"));
        const unsubscribe= onSnapshot(q, (querySnapshot) => {
           querySnapshot.forEach((doc) => {
-             setPosts(doc.data())
+          let dta=doc.data()
+          getData(dta)
           });
     
         });
+    }
+    const getData=(dta)=>{
+             setPost(dta)
+             console.log(post.message)
     }
     
     const handleSubmit=async (e)=>{
@@ -43,7 +48,8 @@ getPosts();
         message:input,
         image:user.photoURL,
         username:user.displayName,
-        timestamp:new Date,
+        timestamp: serverTimestamp()
+        
        });
        console.log("Document written with ID: ", docRef.id);
      // } catch (e) {
@@ -115,14 +121,14 @@ getPosts();
             </div>
 
            
-            {posts.forEach((post)=>{
+            
             <Post 
             username={post.username}
             key={post.id}
             messsage={post.message}
             image={post.image}
-            timestamp={post.timestampp}
-            />})}
+            timestamp={post.timestamp}
+            />
                     
         </div>
     )
