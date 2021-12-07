@@ -5,7 +5,6 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import {FaVideo} from 'react-icons/fa'
 import {FaRegGrinAlt} from 'react-icons/fa'
 import {GrGallery} from 'react-icons/gr'
-import Post from './Post';
 import code from '../images/code.png'
 import woman4 from '../images/woman4.jpg'
 import soft from '../images/soft.png'
@@ -13,34 +12,18 @@ import page from '../images/page.png'
 import prof1 from '../images/prof1.jpg'
 import simple from '../images/simple.png'
 import db from './firebase';
-import { collection, query, onSnapshot, addDoc,serverTimestamp} from "firebase/firestore"
+import { collection,addDoc} from "firebase/firestore"
 import {useStateValue} from './StateProvider'
+import Posts from './Posts';
 // import Status from './Status';
 const Mainfeeds = () => {
     const[input,setInput]=useState('')
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
-    const [posts,setPosts]=useState([])
-    useEffect(()=>{
-        const q = query(collection(db, "posts"));
-        const unsubscribe= onSnapshot(q, (querySnapshot) => {
-           querySnapshot.forEach((doc) => {
-              const data=doc.data()
-              getData(data)
-           });
-         });
-    },[db])
-    const getData=(data)=>{
-        setPosts([{
-            username:data.username,
-            id:data.id,
-            image:data.image,
-            timestamp:data.timestamp,
-            posttext:data.message,
-         }])
+   
         
     //  console.log(posttext)
-    }
+   
     const handleSubmit=async (e)=>{
      e.preventDefault();
      //here we will have another function to be called i here
@@ -115,20 +98,9 @@ const Mainfeeds = () => {
                     <FaRegGrinAlt style={{color:'orange',fontSize:'24px'}}/>
                     <span>emoji</span>
                     </div>
-                   
                 </div>
-
-            </div>
-          {posts.map(post=>(
-              <Post 
-              username={post.username} 
-              key={post.id}
-              image={post.image}
-              posttext={post.posttext}
-              />
-          ))}
-          
-                    
+            </div> 
+            <Posts />      
         </div>
     )
 }

@@ -45,6 +45,7 @@
   margin:5px;
   border-radius:5px;
   background:#fff;
+  overflow-x: hidden;
 }
 .card1{
   height:170px;
