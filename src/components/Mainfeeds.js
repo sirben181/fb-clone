@@ -13,7 +13,7 @@ import page from '../images/page.png'
 import prof1 from '../images/prof1.jpg'
 import simple from '../images/simple.png'
 import db from './firebase';
-import { collection, query, onSnapshot, addDoc} from "firebase/firestore"
+import { collection, query, onSnapshot, addDoc,serverTimestamp} from "firebase/firestore"
 import {useStateValue} from './StateProvider'
 // import Status from './Status';
 const Mainfeeds = () => {
@@ -22,25 +22,21 @@ const Mainfeeds = () => {
     const filepickerRef=useRef(null)
     const [post,setPost]=useState('')
     useEffect(()=>{
-getPosts();
-    },[db])
-    const getPosts=async()=>{
-       
-
         const q = query(collection(db, "posts"));
-       const unsubscribe= onSnapshot(q, (querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-          let dta=doc.data()
-          getData(dta)
-          });
+        const unsubscribe= onSnapshot(q, (querySnapshot) => {
+           querySnapshot.forEach((doc) => {
+              const data=doc.data()
+              getData(data)
+           });
+         });
+    },[db])
+    const getData=(data)=>{
+        const dta={
+            username:data.username,
+            image:data.
+        }
     
-        });
     }
-    const getData=(dta)=>{
-             setPost(dta)
-             console.log(post.message)
-    }
-    
     const handleSubmit=async (e)=>{
      e.preventDefault();
      //here we will have another function to be called i here
@@ -48,8 +44,8 @@ getPosts();
         message:input,
         image:user.photoURL,
         username:user.displayName,
-        timestamp: serverTimestamp()
-        
+        timestamp: ''
+
        });
        console.log("Document written with ID: ", docRef.id);
      // } catch (e) {
@@ -105,7 +101,7 @@ getPosts();
                     </div>
                     
                     {/* photo */}
-                    <div className="photo" onClick={()=>filepickerRef.current.click()}>
+                    <div className="photo" onClick={()=>filepickerRef}>
                     <GrGallery style={{color:'green',fontSize:'24px'}}/>
                     <span>Photo/video</span>
                     </div>
