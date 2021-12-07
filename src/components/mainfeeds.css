@@ -6,6 +6,7 @@
   flex-direction:column;
   margin-top:10px;
   min-height:100vh;
+  height:auto;
   background:#eee;
  margin-left:50px;
   overflow-y: scroll;

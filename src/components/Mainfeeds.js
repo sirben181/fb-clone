@@ -20,7 +20,7 @@ const Mainfeeds = () => {
     const[input,setInput]=useState('')
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
-    const [post,setPost]=useState('')
+    const [posts,setPosts]=useState([])
     useEffect(()=>{
         const q = query(collection(db, "posts"));
         const unsubscribe= onSnapshot(q, (querySnapshot) => {
@@ -31,11 +31,15 @@ const Mainfeeds = () => {
          });
     },[db])
     const getData=(data)=>{
-        const dta={
+        setPosts([{
             username:data.username,
-            image:data.
-        }
-    
+            id:data.id,
+            image:data.image,
+            timestamp:data.timestamp,
+            posttext:data.message,
+         }])
+        
+    //  console.log(posttext)
     }
     const handleSubmit=async (e)=>{
      e.preventDefault();
@@ -115,16 +119,15 @@ const Mainfeeds = () => {
                 </div>
 
             </div>
-
-           
-            
-            <Post 
-            username={post.username}
-            key={post.id}
-            messsage={post.message}
-            image={post.image}
-            timestamp={post.timestamp}
-            />
+          {posts.map(post=>(
+              <Post 
+              username={post.username} 
+              key={post.id}
+              image={post.image}
+              posttext={post.posttext}
+              />
+          ))}
+          
                     
         </div>
     )
