@@ -7,7 +7,7 @@ import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
 
 
-const Post = ({image,username,posttext,timestamp}) => {
+const Post = ({profile,username,posttext,timestamp}) => {
     const [{user},dispatch]=useStateValue()
   
 
@@ -15,7 +15,7 @@ const Post = ({image,username,posttext,timestamp}) => {
         <div className="post_container">
            <div className="post">
                <div className="post_header">
-                 <Avatar src={image}/>
+                 <Avatar src={profile}/>
                  <p>{username}</p><br/>
                  <p></p>
                </div>
@@ -23,7 +23,7 @@ const Post = ({image,username,posttext,timestamp}) => {
                <span>{posttext}</span>
                </div>
                <div className="post_image">
-                   <img className="actual_image" src={image}alt=""/>
+                   <img className="actual_image" src='' alt=""/>
                </div>
                <div className="comment_icons">
                    <div className="comment">
