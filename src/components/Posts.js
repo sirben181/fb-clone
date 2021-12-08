@@ -12,14 +12,16 @@ const Posts = () => {
         const q = query(collection(db, "posts"),orderBy("timestamp", "desc"));
         const unsubscribe= onSnapshot(q, (querySnapshot) => {
            querySnapshot.forEach((doc) => {
-               const posts=[]
-              posts.push(doc.data())
-              setPosts(posts
-                // username: posts.username,
-                // id:posts.id,
-                // image:posts.image,
-                // timestamp:posts.timestamp,
-                // posttext:posts.message,
+              const data=doc.data()
+              setPosts([
+                {
+                username: posts.username,
+                id:posts.id,
+                image:posts.image,
+                timestamp:posts.timestamp,
+                posttext:posts.message,
+              }]
+                
               )
            },(error)=>{console.error(error)});
          });

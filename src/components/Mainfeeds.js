@@ -31,7 +31,7 @@ const Mainfeeds = () => {
         message:input,
         image:user.photoURL,
         username:user.displayName,
-        timestamp:new Date,
+        timestamp:serverTimestamp()
 
        });
        console.log("Document written with ID: ", docRef.id);
