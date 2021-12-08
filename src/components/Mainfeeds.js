@@ -12,7 +12,7 @@ import page from '../images/page.png'
 import prof1 from '../images/prof1.jpg'
 import simple from '../images/simple.png'
 import db from './firebase';
-import { collection,addDoc} from "firebase/firestore"
+import { collection,addDoc,serverTimestamp} from "firebase/firestore"
 import {useStateValue} from './StateProvider'
 import Posts from './Posts';
 // import Status from './Status';
@@ -31,7 +31,7 @@ const Mainfeeds = () => {
         message:input,
         image:user.photoURL,
         username:user.displayName,
-        timestamp: ''
+        timestamp:new Date,
 
        });
        console.log("Document written with ID: ", docRef.id);
@@ -100,7 +100,9 @@ const Mainfeeds = () => {
                     </div>
                 </div>
             </div> 
-            <Posts />      
+            <Posts /> 
+                 
+
         </div>
     )
 }

@@ -14,8 +14,9 @@
     width:100%;
     padding:20px;
     border-radius:10px;
-    margin-bottom:150px;
+  margin-bottom: 20px;
 }
+/* .post:last-child{margin-bottom:150px;} */
 .post_header{
     display:flex;
 }
@@ -26,7 +27,7 @@
 .post_text{
     display:flex;
     padding-bottom:10px;
-    border-bottom:2px solid rgb(141, 139, 139);
+    /* border-bottom:2px solid rgb(141, 139, 139); */
 }
 .post_text span{
     padding-left:40px;

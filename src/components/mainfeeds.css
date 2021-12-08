@@ -10,6 +10,7 @@
   background:#eee;
  margin-left:50px;
   overflow-y: scroll;
+  /* margin-bottom:100px; */
   /* overflow-x: hidden; */
 }
 .status{
@@ -96,6 +97,8 @@ input{
   border:none;
   background:#ddd;
   font-size:20px;
+  word-wrap:break-word;
+  word-break:break-all;
 }
 input::placeholder{
   text-align:center;

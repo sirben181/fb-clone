@@ -16,7 +16,8 @@ const Post = ({image,username,posttext,timestamp}) => {
            <div className="post">
                <div className="post_header">
                  <Avatar src={image}/>
-                 <p>{username}</p>
+                 <p>{username}</p><br/>
+                 <p></p>
                </div>
                <div className="post_text">
                <span>{posttext}</span>
