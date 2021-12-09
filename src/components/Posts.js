@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Post from './Post'
 import db from './firebase'
 import { collection,orderBy, query, onSnapshot} from "firebase/firestore"
-import { Error } from '@mui/icons-material'
+// import {} from '@mui/icons-material'
 
 
 // const q = query(citiesRef, orderBy("name"), limit(3));
@@ -12,17 +12,16 @@ const Posts = () => {
         const q = query(collection(db, "posts"),orderBy("timestamp", "desc"));
         const unsubscribe= onSnapshot(q, (querySnapshot) => {
            querySnapshot.forEach((doc) => {
-              const {data}=doc.data()
-              setPosts([
-                {
-                username: posts.username,
-                id:posts.id,
-                profile:posts.image,
-                timestamp:posts.timestamp,
-                posttext:posts.message,
-              }])
-              console.log(data.message)
-           },(error)=>{console.error(error)});
+              const data=doc.data()
+              
+               
+                // username: posts.username,
+                // id:posts.id,
+                // profile:posts.image,
+                // timestamp:posts.timestamp,
+                // posttext:posts.message,
+               setPosts([data])
+                  })
          });
     },[db])
        
