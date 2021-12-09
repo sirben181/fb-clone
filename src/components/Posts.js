@@ -13,13 +13,6 @@ const Posts = () => {
         const unsubscribe= onSnapshot(q, (querySnapshot) => {
            querySnapshot.forEach((doc) => {
               const data=doc.data()
-              
-               
-                // username: posts.username,
-                // id:posts.id,
-                // profile:posts.image,
-                // timestamp:posts.timestamp,
-                // posttext:posts.message,
                setPosts([data])
                   })
          });
@@ -32,7 +25,7 @@ const Posts = () => {
               username={post.username} 
               key={post.id}
               image={post.image}
-              posttext={post.posttext}
+              posttext={post.message}
               timestamp={post.timestamp}
               />
           ))}
