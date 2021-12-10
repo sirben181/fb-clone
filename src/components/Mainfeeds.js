@@ -20,6 +20,7 @@ const Mainfeeds = () => {
     const[input,setInput]=useState('')
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
+    const[imageToPost,setImageToPost]=useState(null)
    
         
     //  console.log(posttext)
@@ -39,7 +40,18 @@ const Mainfeeds = () => {
        // console.error("Error adding document: ", e);
      setInput('')
     }
-
+     const addImageToPost=(e)=>{
+        const reader=new FileReader()
+        if(e.target.files[0] ){
+            reader.readAsDataURL(e.target.files[0])
+        }
+        reader.onLoad=(readerEvent)=>{
+            setImageToPost(readerEvent.target.result)
+        }
+     }
+     const removeImage=()=>{
+         setImageToPost(null)
+     }
     return (
         <div className="centralfeeds">
             {/* <Status /> */}
@@ -80,6 +92,10 @@ const Mainfeeds = () => {
                     value={input}/>
                     <button type="submit" hidden> submit</button>
                 </form>
+                {!imageToPost && (<div onClick={removeImage} style={{display:'flex',flexDirection:'column'}}>
+                     <img style={{height:'40px',objectFit:'contain'}} alt="" src={imageToPost}/>
+                     <p style={{fontSize:'18px',color:'red', cursor:'pointer'}} >remove</p>
+                </div>)}
                 <div className="inputposticons">
                     {/* video */}
                     <div className="video">
@@ -88,9 +104,10 @@ const Mainfeeds = () => {
                     </div>
                     
                     {/* photo */}
-                    <div className="photo" onClick={()=>filepickerRef}>
+                    <div className="photo" onClick={()=>filepickerRef.current.click()}>
                     <GrGallery style={{color:'green',fontSize:'24px'}}/>
                     <span>Photo/video</span>
+                    <input ref={filepickerRef}  onChange={addImageToPost} type='file' hidden />
                     </div>
                    
                     {/* emoji */}
