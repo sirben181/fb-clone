@@ -17,7 +17,7 @@ import {useStateValue} from './StateProvider'
 import Posts from './Posts';
 // import Status from './Status';
 const Mainfeeds = () => {
-    const[input,setInput]=useState('')
+    const inputRef=useRef(null)
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
     const[imageToPost,setImageToPost]=useState(null)
@@ -29,7 +29,7 @@ const Mainfeeds = () => {
      e.preventDefault();
      //here we will have another function to be called i here
      const docRef = await addDoc(collection(db, "posts"), {
-        message:input,
+        message:inputRef.current.value,
         image:user.photoURL,
         username:user.displayName,
         timestamp:serverTimestamp()
@@ -38,7 +38,7 @@ const Mainfeeds = () => {
        console.log("Document written with ID: ", docRef.id);
      // } catch (e) {
        // console.error("Error adding document: ", e);
-     setInput('')
+      inputRef.current.value=''
     }
      const addImageToPost=(e)=>{
         const reader=new FileReader()
@@ -88,12 +88,12 @@ const Mainfeeds = () => {
             <div className="inputPost">
                 <form onSubmit={handleSubmit}>
                     <Avatar src={user.photoURL} alt="" style={{marginRight:'10px' }} />
-                    <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>setInput(e.target.value)} 
-                    value={input}/>
+                    <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>inputRef.current.value} 
+                    ref={inputRef}/>
                     <button type="submit" hidden> submit</button>
                 </form>
-                {!imageToPost && (<div onClick={removeImage} style={{display:'flex',flexDirection:'column'}}>
-                     <img style={{height:'40px',objectFit:'contain'}} alt="" src={imageToPost}/>
+                {imageToPost && (<div onClick={removeImage} style={{display:'flex',flexDirection:'column'}}>
+                     <img style={{height:'40px', width:'40px', objectFit:'contain'}} alt="" src={imageToPost}/>
                      <p style={{fontSize:'18px',color:'red', cursor:'pointer'}} >remove</p>
                 </div>)}
                 <div className="inputposticons">
