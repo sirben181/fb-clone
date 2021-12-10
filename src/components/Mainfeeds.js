@@ -30,7 +30,7 @@ const Mainfeeds = () => {
      //here we will have another function to be called i here
      const docRef = await addDoc(collection(db, "posts"), {
         message:inputRef.current.value,
-        image:user.photoURL,
+        image:user.imageToPost,
         username:user.displayName,
         timestamp:serverTimestamp()
 
@@ -42,11 +42,13 @@ const Mainfeeds = () => {
     }
      const addImageToPost=(e)=>{
         const reader=new FileReader()
-        if(e.target.files[0] ){
-            reader.readAsDataURL(e.target.files[0])
+        const file=e.target.files[0]
+        if(file){
+            reader.onLoad=(reader)=>{
+                setImageToPost(reader.target.result)
+             console.log()
         }
-        reader.onLoad=(readerEvent)=>{
-            setImageToPost(readerEvent.target.result)
+        reader.readAsDataURL(file)
         }
      }
      const removeImage=()=>{
