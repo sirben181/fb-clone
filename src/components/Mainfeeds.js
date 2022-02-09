@@ -20,7 +20,7 @@ const Mainfeeds = () => {
     const inputRef=useRef(null)
     const[{user},dispatch]=useStateValue()
     const filepickerRef=useRef(null)
-    const[imageToPost,setImageToPost]=useState(null)
+    const[imageToPost,setImageToPost]=useState('')
    
         
     //  console.log(posttext)
@@ -30,29 +30,28 @@ const Mainfeeds = () => {
      //here we will have another function to be called i here
      const docRef = await addDoc(collection(db, "posts"), {
         message:inputRef.current.value,
-        image:user.imageToPost,
+        image:user.photoURL,
         username:user.displayName,
         timestamp:serverTimestamp()
 
        });
        console.log("Document written with ID: ", docRef.id);
-     // } catch (e) {
-       // console.error("Error adding document: ", e);
+      
+
       inputRef.current.value=''
     }
      const addImageToPost=(e)=>{
         const reader=new FileReader()
         const file=e.target.files[0]
-        if(file){
-            reader.onLoad=(reader)=>{
-                setImageToPost(reader.target.result)
-             console.log()
-        }
-        reader.readAsDataURL(file)
-        }
+       if(file){
+           reader.readAsDataURL(file)
+       }
+       reader.onLoad=(readerEvent)=>{
+         setImageToPost(readerEvent.target.result)
+       }   
      }
      const removeImage=()=>{
-         setImageToPost(null)
+         setImageToPost('')
      }
     return (
         <div className="centralfeeds">
@@ -87,15 +86,16 @@ const Mainfeeds = () => {
             {/* we need a input form with a hidden button with the correct functionality */}
            
             {/* icons video photo ,image icon and emoji icon */}
-            <div className="inputPost">
+            <div className="inputPost" style={{position:'relative'}}>
                 <form onSubmit={handleSubmit}>
                     <Avatar src={user.photoURL} alt="" style={{marginRight:'10px' }} />
                     <input type="text" placeholder={`whats are u thing ${user.displayName}`} onChange={(e)=>inputRef.current.value} 
                     ref={inputRef}/>
                     <button type="submit" hidden> submit</button>
                 </form>
-                {imageToPost && (<div onClick={removeImage} style={{display:'flex',flexDirection:'column'}}>
-                     <img style={{height:'40px', width:'40px', objectFit:'contain'}} alt="" src={imageToPost}/>
+                {!imageToPost && (<div onClick={removeImage} style={{display:'flex',flexDirection:'column',
+                alignItems:'flex-end',position:'absolute',right:'25px',top:'20px'}}>
+                     <img style={{height:'40px', width:'40px', objectFit:'contain'}} src={imageToPost} alt=""/>
                      <p style={{fontSize:'18px',color:'red', cursor:'pointer'}} >remove</p>
                 </div>)}
                 <div className="inputposticons">

@@ -10,11 +10,13 @@ import {collection,orderBy, query, onSnapshot} from "firebase/firestore"
 const Posts = () => {
    const [posts,setPosts]=useState([])
     useEffect(()=>{
-        const q = query(collection(db, "posts"),orderBy("timestamp"));
+        const q = query(collection(db, "posts"), orderBy("timestamp","asce"));
         const unsubscribe= onSnapshot(q, (querySnapshot) => {
            querySnapshot.forEach((doc) => {
               const data=doc.data()
+            //   posts.push(data)
                setPosts([data])
+            console.log(posts)
               
                   })
          },
@@ -31,63 +33,7 @@ const Posts = () => {
               posttext={post.message}
               timestamp={post.timestamp}
               />
-          ))}{posts.map((post)=>(
-            <Post 
-            username={post.username} 
-            key={post.id} 
-            image={post.image}
-            posttext={post.message}
-            timestamp={post.timestamp}
-            />
-        ))}{posts.map((post)=>(
-          <Post 
-          username={post.username} 
-          key={post.id} 
-          image={post.image}
-          posttext={post.message}
-          timestamp={post.timestamp}
-          />
-      ))}{posts.map((post)=>(
-        <Post 
-        username={post.username} 
-        key={post.id} 
-        image={post.image}
-        posttext={post.message}
-        timestamp={post.timestamp}
-        />
-    ))}{posts.map((post)=>(
-      <Post 
-      username={post.username} 
-      key={post.id} 
-      image={post.image}
-      posttext={post.message}
-      timestamp={post.timestamp}
-      />
-  ))}{posts.map((post)=>(
-    <Post 
-    username={post.username} 
-    key={post.id} 
-    image={post.image}
-    posttext={post.message}
-    timestamp={post.timestamp}
-    />
-))}{posts.map((post)=>(
-  <Post 
-  username={post.username} 
-  key={post.id} 
-  image={post.image}
-  posttext={post.message}
-  timestamp={post.timestamp}
-  />
-))}{posts.map((post)=>(
-  <Post 
-  username={post.username} 
-  key={post.id} 
-  image={post.image}
-  posttext={post.message}
-  timestamp={post.timestamp}
-  />
-))}
+          ))}
           
         </div>
     )

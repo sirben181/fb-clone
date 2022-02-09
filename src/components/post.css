@@ -19,10 +19,15 @@
 /* .post:last-child{margin-bottom:150px;} */
 .post_header{
     display:flex;
-}
-.post_header>p{
-    display:flex;
     flex-direction:column;
+    padding-bottom:10px;
+}
+.prof>p{padding-top:10px;
+font-weight:400;}
+.prof{display:flex;
+padding-left:20px;}
+.timep{
+    font-weight:300;
 }
 .post_text{
     display:flex;

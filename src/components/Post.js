@@ -7,17 +7,19 @@ import {FaShare}  from "react-icons/fa"
 import {useStateValue} from './StateProvider'
 
 
-const Post = ({profile,username,posttext,timestamp}) => {
+const Post = ({image,username,posttext,timestamp}) => {
     const [{user},dispatch]=useStateValue()
   
 
     return (
         <div className="post_container">
            <div className="post">
-               <div className="post_header">
-                 <Avatar src={profile}/>
-                 <p>{username}</p><br/>
-                 <p></p>
+               <div className="post_header">                
+                  <div className="prof"> 
+                    <Avatar src={image}/>
+                     <p>{username}</p>
+                  </div>
+                 <p className="timep">{new Date(timestamp?.toDate()).toLocaleString()}</p>
                </div>
                <div className="post_text">
                <span>{posttext}</span>
